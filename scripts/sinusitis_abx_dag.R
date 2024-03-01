@@ -41,7 +41,7 @@ dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "appropriate", Z = NULL, 
   mutate(open = case_when(open == TRUE ~ "Open",
                           open == FALSE ~ "Closed")) |> 
   gt::gt() |> 
-  gt::cols_label(paths = gt::md("Paths primary -> secondary"), open = "Status") |> 
+  gt::cols_label(paths = gt::md("Paths symptoms -> appropriate"), open = "Status") |> 
   gt::tab_style(style = list(gt::cell_text(style = "italic", color = "red")),
                 locations = gt::cells_body(columns = c(open),
                                            rows = open == "Open")) |> 
@@ -56,7 +56,7 @@ dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "appropriate", Z = "Rx", 
   mutate(open = case_when(open == TRUE ~ "Open",
                           open == FALSE ~ "Closed")) |> 
   gt::gt() |> 
-  gt::cols_label(paths = gt::md("Paths primary -> secondary"), open = "Status") |> 
+  gt::cols_label(paths = gt::md("Paths symptoms -> appropriate (conditioned on Rx)"), open = "Status") |> 
   gt::tab_style(style = list(gt::cell_text(style = "italic", color = "red")),
                 locations = gt::cells_body(columns = c(open),
                                            rows = open == "Open")) |> 
