@@ -4,6 +4,7 @@
 library(tidyverse)
 library(dagitty)
 library(ggdag)
+library(gt)
 
 set.seed(16)
 
@@ -63,6 +64,9 @@ dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "appropriate", Z = NULL, 
   identity() -> sinusitis_abx_dag_open
 sinusitis_abx_dag_open
 
+sinusitis_abx_dag_open |> 
+  gtsave("tabs/sinusitis_abx_dag_open.html")
+
 
 #' conditioned on Rx:
 dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "appropriate", Z = "Rx", directed = FALSE) |> 
@@ -78,6 +82,8 @@ dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "appropriate", Z = "Rx", 
   identity() -> sinusitis_abx_dag_Z_Rx
 sinusitis_abx_dag_Z_Rx
 
+sinusitis_abx_dag_Z_Rx |> 
+  gtsave("tabs/sinusitis_abx_dag_Z_Rx.html")
 
 
 #' ###################################
@@ -98,6 +104,10 @@ dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "Rx", Z = NULL, directed 
   identity() -> sinusitis_abx_Rx_dag_open
 sinusitis_abx_Rx_dag_open
 
+sinusitis_abx_Rx_dag_open |> 
+  gtsave("tabs/sinusitis_abx_Rx_dag_open.html")
+
+
 
 #' conditioned on appropriate:
 dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "Rx", Z = "appropriate", directed = FALSE) |> 
@@ -112,3 +122,8 @@ dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "Rx", Z = "appropriate", 
   gt::opt_row_striping() |> 
   identity() -> sinusitis_abx_Rx_dag_Z_appropriate
 sinusitis_abx_Rx_dag_Z_appropriate
+
+sinusitis_abx_Rx_dag_Z_appropriate |> 
+  gtsave("tabs/sinusitis_abx_Rx_dag_Z_appropriate.html")
+
+  
