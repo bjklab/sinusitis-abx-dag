@@ -48,7 +48,7 @@ p_sinusitis_abx_dag |>
 
 #' ###################################
 #' paths to appropriateness
-#' ###################################
+#' ###################################e
 
 #' unadjusted:
 dagitty::paths(sinusitis_abx_dag, from = "pt_sx", to = "appropriate", Z = NULL, directed = FALSE) |> 
